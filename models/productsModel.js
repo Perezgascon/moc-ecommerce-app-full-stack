@@ -1,9 +1,5 @@
 const { sequelize } = require('../db/conn');
 const { DataTypes } = require('sequelize');
-const sequelize = new Sequelize('database', 'username', 'password', {
-  dialect: 'mysql',
-  host: 'localhost'
-});
 
 const Product = sequelize.define('Product', {
     product_id: {
@@ -40,6 +36,5 @@ const Product = sequelize.define('Product', {
     tableName: 'products',
     timestamps: false
 });
-
 
 module.exports = { Product };
