@@ -1,45 +1,62 @@
 const { sequelize } = require('../db/conn');
 const { DataTypes } = require('sequelize');
-// const { Product } = require('./productsModel');
+const { Product } = require('./productsModel');
 const { Order } = require('./ordersModel');
 
 
 const OrderItem = sequelize.define('OrderItem', {
-    order_item_id: {
-        type: DataTypes.INTEGER,
+    orderItemId: {
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true
-    },
-    order_id: {
-        type: DataTypes.INTEGER,
+        defaultValue: DataTypes.UUIDV4,
         allowNull: false
     },
-    product_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+    orderId: {
+        type: DataTypes.UUID,
+        references: {
+            model: 'Order',
+            key: 'order_id'
+        }
+    },
+    // ForeignKey to Product
+    productId: {
+        type: DataTypes.UUID,
+        references: {
+            model: 'Product',
+            key: 'product_id'
+
+        }
+
     },
     quantity: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    unit_price: {
-        type: DataTypes.DECIMAL,
-        allowNull: false
-    },
-    subtotal: {
-        type: DataTypes.DECIMAL,
-        allowNull: false
-    }
+    // unitPrice: {
+    //     type: DataTypes.DECIMAL,
+    //     allowNull: false,
+    //     defaultValue: 1
+    // },
+    // subtotal: {
+    //     type: DataTypes.DECIMAL,
+    //     allowNull: false
+    // }
 }, {
-    tableName: 'order_items',
+    sequelize,
+    modelName: 'OrderItem',
+    tableName: 'orderItems',
     timestamps: false
 });
 
-Order.hasMany(OrderItem, {
-    foreignKey: 'order_id'
-});
-OrderItem.belongsTo(Order, {
-    foreignKey: 'order_id'
-});
+// Order-Product relationship
+Order.belongsToMany(Product, { through: OrderItem, foreignKey: 'orderId' });
+Product.belongsToMany(Order, { through: OrderItem, foreignKey: 'productId' });
+
+// Optional: If you need direct access from Order to OrderItems or vice versa
+Order.hasMany(OrderItem, { foreignKey: 'orderId' });
+OrderItem.belongsTo(Order, { foreignKey: 'orderId' });
+
+Product.hasMany(OrderItem, { foreignKey: 'productId' });
+OrderItem.belongsTo(Product, { foreignKey: 'productId' });
 
 module.exports = { OrderItem };
