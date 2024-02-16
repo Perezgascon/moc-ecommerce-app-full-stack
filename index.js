@@ -15,16 +15,12 @@ app.get('/health', (req, res) => {
     res.send("It's Alive!");
 });
 
-//testing connection
+// import routes
+const productsRoutes = require('./routes/productsRoutes');
 
-app.get('/products', async (req, res) => { // Make the route handler asynchronous
-    try {
-        const products = await Product.findAll(); // Wait for the Promise to resolve
-        res.status(200).json(products); // Send the response with the products
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
+// use routes
+
+app.use('/products', productsRoutes.modules);
 
 app.listen(PORT, () => {
     console.log(`App is listening on port ${PORT}`)
