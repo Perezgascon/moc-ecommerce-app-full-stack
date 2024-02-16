@@ -17,10 +17,17 @@ app.get('/health', (req, res) => {
 
 // import routes
 const productsRoutes = require('./routes/productsRoutes');
+const ordersRoutes = require('./routes/ordersRoutes');
+const usersRoutes = require('./routes/usersRoutes');
+
+
 
 // use routes
-
 app.use('/products', productsRoutes.modules);
+app.use('/orders', ordersRoutes.modules);
+app.use('/users', usersRoutes.modules);
+
+
 
 app.listen(PORT, () => {
     console.log(`App is listening on port ${PORT}`)
