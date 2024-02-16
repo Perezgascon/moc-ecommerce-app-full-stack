@@ -4,7 +4,7 @@ const { Product } = require('./productsModel');
 const { Order } = require('./ordersModel');
 
 
-const OrderItem = sequelize.define('OrderItem', {
+const OrderItem = sequelize.define('orderItems', {
     orderItemId: {
         type: DataTypes.UUID,
         primaryKey: true,
@@ -32,15 +32,6 @@ const OrderItem = sequelize.define('OrderItem', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    // unitPrice: {
-    //     type: DataTypes.DECIMAL,
-    //     allowNull: false,
-    //     defaultValue: 1
-    // },
-    // subtotal: {
-    //     type: DataTypes.DECIMAL,
-    //     allowNull: false
-    // }
 }, {
     sequelize,
     modelName: 'OrderItem',

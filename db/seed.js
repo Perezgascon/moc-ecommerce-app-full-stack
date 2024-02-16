@@ -1,10 +1,11 @@
 const { sequelize } = require('./conn');
 const { v4: uuidv4 } = require('uuid');
 
-const { OrderItem } = require('../models/orderItemsModel');
 const { Order } = require('../models/ordersModel');
 const { Product } = require('../models/productsModel');
 const { User } = require('../models/usersModel');
+const { OrderItem } = require('../models/orderItemsModel');
+
 
 const seedDatabase = async () => {
     try {
@@ -91,11 +92,11 @@ const seedDatabase = async () => {
         });
 
         await OrderItem.bulkCreate([
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[0].product_id, quantity: 2 }, // 2 socks
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[1].product_id, quantity: 3 }, // 3 T-Shirts
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[2].product_id, quantity: 1 }, // 1 pair of Shoes
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[3].product_id, quantity: 1 }, // 1 pair of Pants
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[4].product_id, quantity: 1 }, // 1 Hat
+            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[0].product_id, quantity: 2 }, 
+            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[1].product_id, quantity: 3 }, 
+            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[2].product_id, quantity: 1 },
+            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[3].product_id, quantity: 1 }, 
+            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[4].product_id, quantity: 1 }, 
           ]);
 
         // Note: Add more products as needed for each category.
