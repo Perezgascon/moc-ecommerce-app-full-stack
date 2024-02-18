@@ -8,6 +8,9 @@ import PaymentPage from './pages/PaymentPage'
 import ProductPage from './pages/ProductPage'
 import NotFound from './pages/NotFound'
 
+import './App.css';
+
+
 
 export default function App() {
   return (
