@@ -1,0 +1,55 @@
+.sideBar {
+    display: inline-block;
+    background-color: hsl(10, 93%, 71%);
+    border-radius: 10px;
+    width: 30%;
+    padding: 50px 10px;
+    margin-top: 100px;
+    margin-left: 60px;
+    text-align: center;
+    clear: right;
+    font-size: 0.8rem;
+    color: white;
+}
+
+.sideBar li {
+    list-style-type: none;
+    margin: 15px 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+@media screen and (min-width: 375px) {
+
+
+}
+@media screen and (min-width: 481px) {
+  
+
+}
+
+@media screen and (min-width: 600px) {
+
+}
+
+
+@media screen and (min-width: 769px) {
+    .sideBar {
+        width: 20%;
+        font-size: 1rem;
+    }
+
+    .sideBar li {
+        text-decoration: none;
+
+    }
+
+}
+
+@media screen and (min-width: 1025px) {
+    .category-bubble {
+        width: 20%;
+        font-size: 1.25rem;
+    }
+
+}

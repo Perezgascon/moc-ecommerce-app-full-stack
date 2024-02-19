@@ -1,10 +1,10 @@
 import React from 'react'
-import itemsSideBar from '../components/itemsSideBar'
+import ItemsSideBar from '../components/ItemsSideBar'
 
 export default function Dashboard() {
   return (
     <div>
-
+      <ItemsSideBar />
     </div>
   )
 }
