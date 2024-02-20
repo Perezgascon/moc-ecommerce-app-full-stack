@@ -5,6 +5,6 @@ const router = express.Router();
 const CategoriesController = require('../controllers/categoriesControllers');
 
 // get all product categories
-router.get('/', CategoriesController.getCategories);
+router.get('/', CategoriesController.getAllCategories);
 
 exports.modules = router;

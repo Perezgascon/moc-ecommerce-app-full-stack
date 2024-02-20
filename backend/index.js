@@ -1,12 +1,14 @@
 const express = require('express');
 require('dotenv').config();
 const { testConnection } = require('./db/conn');
+const cors = require('cors');
 const { Product } = require('./models/productsModel');
 
 
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const PORT = 8080;
 

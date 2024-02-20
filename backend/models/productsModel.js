@@ -1,5 +1,6 @@
 const { sequelize } = require('../db/conn');
 const { DataTypes } = require('sequelize');
+const { Category } = require('./categoriesModel');
 
 const Product = sequelize.define('Product', {
     product_id: {
@@ -25,8 +26,16 @@ const Product = sequelize.define('Product', {
         type: DataTypes.DECIMAL,
         allowNull: false
     },
-    category: {
-        type: DataTypes.STRING
+    // Replace category_id with category_name
+    category_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        references: {
+            model: Category,
+            key: 'categoryName'
+        },
+        onDelete: 'NO ACTION',
+        onUpdate: 'CASCADE'
     },
     stock_quantity: {
         type: DataTypes.INTEGER,
@@ -38,5 +47,8 @@ const Product = sequelize.define('Product', {
     tableName: 'products',
     timestamps: false
 });
+
+// Establishing the association with Category based on category_name
+Product.belongsTo(Category, { foreignKey: 'categoryName', targetKey: 'categoryName' });
 
 module.exports = { Product };

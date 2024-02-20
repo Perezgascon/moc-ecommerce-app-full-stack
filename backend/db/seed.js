@@ -5,6 +5,7 @@ const { Order } = require('../models/ordersModel');
 const { Product } = require('../models/productsModel');
 const { User } = require('../models/usersModel');
 const { OrderItem } = require('../models/orderItemsModel');
+const { Category } = require('../models/categoriesModel');
 
 
 const seedDatabase = async () => {
@@ -23,7 +24,15 @@ const seedDatabase = async () => {
             address: '123 Main St, New York, NY 10030',
             email: 'john@email.com',
         });
-
+        // create categories
+        const categories = await Category.bulkCreate([
+            {
+                categoryName: "Cat accesorries"
+            },
+            {
+                categoryName: "Cat supplies"
+            }
+        ]);
         // create some starter products
         const products = await Product.bulkCreate([
             {
@@ -32,26 +41,16 @@ const seedDatabase = async () => {
                 picture_url: 'https://example.com/cat_collar.jpg',
                 colors: ['Blue', 'Pink', 'Purple', 'Turquoise'],
                 price: 4,
-                category: 'Pet Accessories',
+                category_name: "Cat accesorries",
                 stock_quantity: 100
             },
-            {
-                product_name: 'Cat Bandana',
-                description: 'Add some flair to your cat\'s style with these trendy bandanas. Choose the colour you like.',
-                picture_url: 'https://example.com/cat_bandana.jpg',
-                colors: ['Yellow', 'Avocado', 'Pink Strawberry', 'Dark Blue', 'Turquoise with triangles', 'Beige with ornaments'],
-                price: 5,
-                category: 'Pet Accessories',
-                stock_quantity: 100
-            },
-            // Additional Cat Supplies
             {
                 product_name: 'Cat Litter Tray',
                 description: 'A durable and spacious litter tray for your feline friend.',
                 picture_url: 'https://example.com/cat_litter_tray.jpg',
                 color: 'Assorted colors',
                 price: 15,
-                category: 'Cat Supplies',
+                category_name: "Cat supplies",
                 stock_quantity: 100
             },
             {
@@ -60,7 +59,7 @@ const seedDatabase = async () => {
                 picture_url: 'https://example.com/litter_scoop.jpg',
                 color: 'Assorted colors',
                 price: 2,
-                category: 'Cat Supplies',
+                category_name: "Cat supplies",
                 stock_quantity: 100
             },
             {
@@ -69,7 +68,7 @@ const seedDatabase = async () => {
                 picture_url: 'https://example.com/cat_litter.jpg',
                 color: 'Assorted scents',
                 price: 18,
-                category: 'Cat Supplies',
+                category_name: "Cat supplies",
                 stock_quantity: 100
             },
             {
@@ -78,11 +77,12 @@ const seedDatabase = async () => {
                 picture_url: 'https://example.com/backpack_carrier_blue.jpg',
                 color: 'Blue',
                 price: 25,
-                category: 'Cat Supplies',
+                category_name: "Cat supplies",
                 stock_quantity: 100
             },
             // Add more products here...
         ]);
+
         // create a single order for the user
         const order = await Order.create({
             order_id: uuidv4(),
@@ -92,12 +92,12 @@ const seedDatabase = async () => {
         });
 
         await OrderItem.bulkCreate([
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[0].product_id, quantity: 2 }, 
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[1].product_id, quantity: 3 }, 
+            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[0].product_id, quantity: 2 },
+            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[1].product_id, quantity: 3 },
             { orderItemId: uuidv4(), orderId: order.order_id, productId: products[2].product_id, quantity: 1 },
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[3].product_id, quantity: 1 }, 
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[4].product_id, quantity: 1 }, 
-          ]);
+            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[3].product_id, quantity: 1 },
+            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[4].product_id, quantity: 1 },
+        ]);
 
         // Note: Add more products as needed for each category.
 
