@@ -18,6 +18,7 @@ app.get('/health', (req, res) => {
     res.send("It's Alive!");
 });
 
+app.use('/images', express.static('images'));
 
 // import routes
 const productsRoutes = require('./routes/productsRoutes');
