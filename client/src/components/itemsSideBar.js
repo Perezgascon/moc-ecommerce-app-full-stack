@@ -9,7 +9,7 @@ export default function ItemsSideBar() {
     // Fetch product categories when the component mounts
     async function fetchCategories() {
       try {
-        const response = await fetch('http://localhost:8080/categories');
+        const response = await fetch('https://ministry-of-cat-shop.onrender.com/categories');
         const categories = await response.json(); // Parse the JSON response
         setProductCategories(categories);
       } catch (error) {
