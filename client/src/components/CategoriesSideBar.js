@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './itemsSideBar.module.css';
+import styles from './categoriesSideBar.module.css';
 
 
 export default function ItemsSideBar() {
@@ -24,7 +24,7 @@ export default function ItemsSideBar() {
       <h2>Product Categories</h2>
       <ul>
         {productCategories.map((category, index) => (
-          <li key={index}>{category.categoryName}</li>
+          <li key={index} onClick={() => onCategorySelect(category.categoryName)}>{category.categoryName}</li>
         ))}
       </ul>
     </div>

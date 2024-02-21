@@ -10,6 +10,7 @@ exports.getAllCategories = async (req, res) => {
     }
 };
 
+
 // get a category by id
 exports.getCategoryById = async (req, res) => {
   try {
