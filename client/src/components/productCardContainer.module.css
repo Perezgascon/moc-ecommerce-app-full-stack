@@ -1,0 +1,36 @@
+.productCardContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    float: right;
+    margin-top: 100px;
+    width: 70%;
+}
+
+@media screen and (min-width: 375px) {
+
+
+}
+@media screen and (min-width: 481px) {
+  
+
+}
+
+@media screen and (min-width: 600px) {
+
+}
+
+@media screen and (min-width: 769px) {
+
+    .productCardContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        float: right;
+        margin-top: 100px;
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+}
