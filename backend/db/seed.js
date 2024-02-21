@@ -10,13 +10,13 @@ const { Category } = require('../models/categoriesModel');
 
 const seedDatabase = async () => {
     try {
-        // clear the database
+        // Clear the database
         await sequelize.sync({ force: true });
 
-        // sync the models
+        // Sync the models
         await Product.sync({ force: true });
 
-        // create a user
+        // Create a user
         const user = await User.create({
             user_id: uuidv4(),
             first_name: 'John',
@@ -24,24 +24,26 @@ const seedDatabase = async () => {
             address: '123 Main St, New York, NY 10030',
             email: 'john@email.com',
         });
-        // create categories
+
+        // Create categories
         const categories = await Category.bulkCreate([
             {
-                categoryName: "Cat accesorries"
+                categoryName: "Cat accessories"
             },
             {
                 categoryName: "Cat supplies"
             }
         ]);
-        // create some starter products
+
+        // Create some starter products
         const products = await Product.bulkCreate([
             {
                 product_name: 'Cat Collar',
                 description: 'A stylish collar for your feline friend. Choose the colour you like.',
                 picture_url: 'https://example.com/cat_collar.jpg',
-                colors: ['Blue', 'Pink', 'Purple', 'Turquoise'],
+                color: null, // No color specified for this product
                 price: 4,
-                category_name: "Cat accesorries",
+                category_id: categories[0].category_id, // Use the category_id of the "Cat accessories" category
                 stock_quantity: 100
             },
             {
@@ -50,7 +52,7 @@ const seedDatabase = async () => {
                 picture_url: 'https://example.com/cat_litter_tray.jpg',
                 color: 'Assorted colors',
                 price: 15,
-                category_name: "Cat supplies",
+                category_id: categories[1].category_id, // Use the category_id of the "Cat supplies" category
                 stock_quantity: 100
             },
             {
@@ -59,7 +61,7 @@ const seedDatabase = async () => {
                 picture_url: 'https://example.com/litter_scoop.jpg',
                 color: 'Assorted colors',
                 price: 2,
-                category_name: "Cat supplies",
+                category_id: categories[1].category_id, // Use the category_id of the "Cat supplies" category
                 stock_quantity: 100
             },
             {
@@ -68,7 +70,7 @@ const seedDatabase = async () => {
                 picture_url: 'https://example.com/cat_litter.jpg',
                 color: 'Assorted scents',
                 price: 18,
-                category_name: "Cat supplies",
+                category_id: categories[1].category_id, // Use the category_id of the "Cat supplies" category
                 stock_quantity: 100
             },
             {
@@ -77,13 +79,13 @@ const seedDatabase = async () => {
                 picture_url: 'https://example.com/backpack_carrier_blue.jpg',
                 color: 'Blue',
                 price: 25,
-                category_name: "Cat supplies",
+                category_id: categories[1].category_id, // Use the category_id of the "Cat supplies" category
                 stock_quantity: 100
             },
             // Add more products here...
         ]);
 
-        // create a single order for the user
+        // Create a single order for the user
         const order = await Order.create({
             order_id: uuidv4(),
             user: user.user_id,
@@ -100,7 +102,6 @@ const seedDatabase = async () => {
         ]);
 
         // Note: Add more products as needed for each category.
-
 
         console.log('Database seeded successfully!');
     } catch (error) {

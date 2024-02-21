@@ -26,13 +26,12 @@ const Product = sequelize.define('Product', {
         type: DataTypes.DECIMAL,
         allowNull: false
     },
-    // Replace category_id with category_name
-    category_name: {
-        type: DataTypes.STRING,
+    category_id: { // Change to category_id
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
             model: Category,
-            key: 'categoryName'
+            key: 'category_id'
         },
         onDelete: 'NO ACTION',
         onUpdate: 'CASCADE'
@@ -48,7 +47,7 @@ const Product = sequelize.define('Product', {
     timestamps: false
 });
 
-// Establishing the association with Category based on category_name
-Product.belongsTo(Category, { foreignKey: 'categoryName', targetKey: 'categoryName' });
+// Establishing the association with Category based on category_id
+Product.belongsTo(Category, { foreignKey: 'category_id' });
 
 module.exports = { Product };

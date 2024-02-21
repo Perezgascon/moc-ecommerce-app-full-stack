@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './itemsSideBar.module.css';
 
+
 export default function ItemsSideBar() {
   const [productCategories, setProductCategories] = useState([]);
 
@@ -23,7 +24,7 @@ export default function ItemsSideBar() {
       <h2>Product Categories</h2>
       <ul>
         {productCategories.map((category, index) => (
-          <li key={index}>{category}</li>
+          <li key={index}>{category.categoryName}</li>
         ))}
       </ul>
     </div>
