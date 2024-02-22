@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'; // Import the useParams hook
 import GoBackButton from '../components/GoBackButton';
 import ShoppingCartButton from '../components/ShoppingCartButton';
+import GreenButton from '../components/GreenButton';
 import styles from './productPage.module.css'; // Import CSS module
+import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
 
 const ProductPage = () => {
     const { productId } = useParams(); // Use the useParams hook to get the productId
+    const navigate = useNavigate(); // Use the useNavigate hook to navigate programmatically
     const [product, setProduct] = useState(null);
 
     useEffect(() => {
@@ -34,6 +37,10 @@ const ProductPage = () => {
         return <div>Loading...</div>;
     }
 
+    function handleClick() {
+        navigate("/dashboard"); // Navigate to the dashboard route
+    }
+
     return (
         <div>
             <GoBackButton />
@@ -45,7 +52,7 @@ const ProductPage = () => {
                     {/* Product colors content */}
                 </div>
                 <div className={styles.productDescription}>{product.description}</div>
-                <div className={styles.greenButton}>ADD TO SHOPPING CART</div>
+                <GreenButton message={"Add to shopping cart"} handleClick={handleClick}/>
             </div>
         </div>
     );

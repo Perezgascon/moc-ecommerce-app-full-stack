@@ -1,0 +1,34 @@
+.greenButton {
+    padding: 15px 25px;
+    border-radius: 25px;
+    width: 20%;
+    cursor: pointer;
+    text-align: center;
+    background-color: hsl(165, 56%, 33%);
+    color: white;
+    margin: 30px auto;
+}
+
+
+@media screen and (min-width: 375px) {
+
+
+}
+@media screen and (min-width: 481px) {
+  
+
+}
+
+@media screen and (min-width: 600px) {
+
+}
+
+@media screen and (min-width: 769px) {
+    
+
+}
+
+@media screen and (min-width: 1025px) {
+   
+
+}

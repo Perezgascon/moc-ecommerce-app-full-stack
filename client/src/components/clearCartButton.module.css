@@ -1,0 +1,50 @@
+.clearButton {
+    position: sticky;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    top: 140px;
+    left: 1100px;
+    background-color: rgb(54, 191, 157, 0.10);
+    border: dashed 1px hsl(165, 56%, 33%);
+    border-radius: 25px;
+    width: 15%;
+    padding: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.clearButton a {
+    color: black;
+}
+
+.productLink {
+    text-decoration: none; /* Remove underlining */
+    color: inherit; /* Inherit text color */
+    display: inline-block; /* Ensure each link behaves like a block element */
+    width: 100%; /* Ensure each link takes up the full width of its container */
+}
+
+
+@media screen and (min-width: 375px) {
+
+
+}
+@media screen and (min-width: 481px) {
+  
+
+}
+
+@media screen and (min-width: 600px) {
+
+}
+
+@media screen and (min-width: 769px) {
+    
+
+}
+
+@media screen and (min-width: 1025px) {
+   
+
+}
