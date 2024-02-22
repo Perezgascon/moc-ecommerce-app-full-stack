@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CategoriesSideBar from '../components/CategoriesSideBar';
 import ProductCardContainer from '../components/ProductCardContainer';
+import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
   const [selectedCategory, setSelectedCategory] = useState('');
