@@ -7,6 +7,8 @@ import Dashboard from './pages/Dashboard'
 import PaymentPage from './pages/PaymentPage'
 import ProductPage from './pages/ProductPage'
 import NotFound from './pages/NotFound'
+import LogInPage from './pages/LogInPage'
+import RegisterPage from './pages/RegisterPage'
 
 import './App.css';
 
@@ -15,16 +17,18 @@ import './App.css';
 export default function App() {
   return (
     <div>
-            <Router>
-                <Navbar />
-                <Routes>
-                    <Route path="/checkout" element={<CheckOutPage />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/payment" element={<PaymentPage />} />
-                    <Route path="/product/:productId" element={<ProductPage />} />
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
-            </Router>
-        </div>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/login" element={<LogInPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/checkout" element={<CheckOutPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/product/:productId" element={<ProductPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </div>
   )
 }
