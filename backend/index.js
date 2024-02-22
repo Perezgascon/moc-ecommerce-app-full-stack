@@ -1,6 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const { testConnection } = require('./db/conn');
+const { authenticateJWT } = require('./middlewares/authMiddleware');
 const cors = require('cors');
 const { Product } = require('./models/productsModel');
 
@@ -16,6 +17,10 @@ testConnection();
 
 app.get('/health', (req, res) => {
     res.send("It's Alive!");
+});
+
+app.get('/protected', authenticateJWT, (req, res) => {
+    res.send('This is a protected route');
 });
 
 app.use('/images', express.static('images'));

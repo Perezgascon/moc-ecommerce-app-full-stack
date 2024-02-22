@@ -9,6 +9,8 @@ import ProductPage from './pages/ProductPage'
 import NotFound from './pages/NotFound'
 import LogInPage from './pages/LogInPage'
 import RegisterPage from './pages/RegisterPage'
+import ProtectedRoute from './components/ProtectedRoute'
+
 
 import './App.css';
 
@@ -23,7 +25,11 @@ export default function App() {
           <Route path="/login" element={<LogInPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/checkout" element={<CheckOutPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/product/:productId" element={<ProductPage />} />
           <Route path="*" element={<NotFound />} />
