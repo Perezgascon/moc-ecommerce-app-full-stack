@@ -1,0 +1,53 @@
+.goBackButton {
+    position: sticky;
+    display: flex;
+    top: 140px;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 30px;
+    width: 15%;
+    cursor: pointer;
+    text-align: center;
+    border: dashed 1px #f7a38b;
+    background-color: rgba(247, 163, 139, 0.25);
+    margin-left: 100px;
+    padding: 15px 25px;
+}
+
+.goBackButtonText {
+    text-transform: uppercase;
+    float: right;
+    font-size: 0.8rem;
+}
+
+/* redundant code that is used multiple times */
+
+.productLink {
+    text-decoration: none; /* Remove underlining */
+    color: inherit; /* Inherit text color */
+    display: inline-block; /* Ensure each link behaves like a block element */
+    width: 100%; /* Ensure each link takes up the full width of its container */
+}
+
+@media screen and (min-width: 375px) {
+
+
+}
+@media screen and (min-width: 481px) {
+  
+
+}
+
+@media screen and (min-width: 600px) {
+
+}
+
+@media screen and (min-width: 769px) {
+    
+
+}
+
+@media screen and (min-width: 1025px) {
+   
+
+}

@@ -8,9 +8,7 @@ export default function ProductCardContainer({ products }) {
   return (
     <div className={styles.productCardContainer}>
       {products.map((product) => (
-        <Link to={`/product/${product.product_id}`}>
           <ProductCard key={product.product_id} product={product} />
-        </Link>
       ))}
     </div>
   );

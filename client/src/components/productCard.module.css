@@ -21,6 +21,13 @@
     margin-bottom: 20px;
 }
 
+.productLink {
+    text-decoration: none; /* Remove underlining */
+    color: inherit; /* Inherit text color */
+    display: inline-block; /* Ensure each link behaves like a block element */
+    width: 100%; /* Ensure each link takes up the full width of its container */
+}
+
 @media screen and (min-width: 375px) {
 
 

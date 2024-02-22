@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CategoriesSideBar from '../components/CategoriesSideBar';
 import ProductCardContainer from '../components/ProductCardContainer';
+import ShoppingCartButton from '../components/ShoppingCartButton';
 import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
@@ -29,6 +30,7 @@ export default function Dashboard() {
 
   return (
     <div>
+      <ShoppingCartButton />
       <CategoriesSideBar onSelectCategory={handleCategorySelect} />
       <ProductCardContainer products={products} />
     </div>

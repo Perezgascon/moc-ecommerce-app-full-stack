@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'; // Import the useParams hook
+import GoBackButton from '../components/GoBackButton';
+import ShoppingCartButton from '../components/ShoppingCartButton';
 import styles from './productPage.module.css'; // Import CSS module
 
 const ProductPage = () => {
@@ -33,14 +35,18 @@ const ProductPage = () => {
     }
 
     return (
-        <div className={styles.productContainer}>
-            <h1 className={styles.productName}>{product.product_name}</h1>
-            <img className={styles.productImage} src={product.picture_url} alt={product.product_name} />
-            <div className={styles.productColors}>
-                {/* Product colors content */}
+        <div>
+            <GoBackButton />
+            <ShoppingCartButton />
+            <div className={styles.productMainContainer}>
+                <h1 className={styles.productName}>{product.product_name}</h1>
+                <img className={styles.productImage} src={product.picture_url} alt={product.product_name} />
+                <div className={styles.productColors}>
+                    {/* Product colors content */}
+                </div>
+                <div className={styles.productDescription}>{product.description}</div>
+                <div className={styles.greenButton}>ADD TO SHOPPING CART</div>
             </div>
-            <div className={styles.productDescription}>{product.description}</div>
-            {/* <div id="buy-button" className="green-button">ADD TO SHOPPING CART</div> */}
         </div>
     );
 }
