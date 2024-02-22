@@ -1,5 +1,6 @@
 .greenButton {
     padding: 15px 25px;
+    border: none;
     border-radius: 25px;
     width: 20%;
     cursor: pointer;

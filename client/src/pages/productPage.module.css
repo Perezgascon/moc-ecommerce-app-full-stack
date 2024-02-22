@@ -1,6 +1,7 @@
 .productMainContainer {
     padding: 50px;
     /* position: relative; */
+    text-align: center;
 }
 
 .buttonsContainer {

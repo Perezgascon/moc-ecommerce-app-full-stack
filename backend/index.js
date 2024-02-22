@@ -23,6 +23,7 @@ app.use('/images', express.static('images'));
 // import routes
 const productsRoutes = require('./routes/productsRoutes');
 const ordersRoutes = require('./routes/ordersRoutes');
+const orderItemsRoutes = require('./routes/orderItemsRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const categoriesRoutes = require('./routes/categoriesRoutes');
 
@@ -31,6 +32,7 @@ const categoriesRoutes = require('./routes/categoriesRoutes');
 // use routes
 app.use('/products', productsRoutes.modules);
 app.use('/orders', ordersRoutes.modules);
+app.use('/orderitems', orderItemsRoutes.modules);
 app.use('/users', usersRoutes.modules);
 app.use('/categories', categoriesRoutes.modules);
 

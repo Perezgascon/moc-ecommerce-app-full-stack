@@ -38,7 +38,7 @@ const ProductPage = () => {
     }
 
     function handleClick() {
-        navigate("/dashboard"); // Navigate to the dashboard route
+       
     }
 
     return (
