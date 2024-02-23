@@ -25,7 +25,6 @@ export default function CategoriesSideBar({ onSelectCategory }) {
 
   return (
     <div className={styles.sideBar}>
-      <h2>Product Categories</h2>
       <ul>
         {productCategories.map((category, index) => (
           <li key={index} onClick={() => handleCategoryClick(category.categoryName)}>{category.categoryName}</li>

@@ -40,7 +40,7 @@ const seedDatabase = async () => {
             {
                 product_name: 'Cat Collar',
                 description: 'A stylish collar for your feline friend. Choose the colour you like.',
-                picture_url: 'images/banadana+yellow.jpeg',
+                picture_url: 'http://localhost:8080/images/bandanas.jpeg',
                 color: null, // No color specified for this product
                 price: 4,
                 category_id: categories[0].category_id, // Use the category_id of the "Cat accessories" category
@@ -49,7 +49,7 @@ const seedDatabase = async () => {
             {
                 product_name: 'Cat Litter Tray',
                 description: 'A durable and spacious litter tray for your feline friend.',
-                picture_url: 'https://example.com/cat_litter_tray.jpg',
+                picture_url: 'http://localhost:8080/images/cat+litter.jpeg',
                 color: 'Assorted colors',
                 price: 15,
                 category_id: categories[1].category_id, // Use the category_id of the "Cat supplies" category
@@ -58,7 +58,7 @@ const seedDatabase = async () => {
             {
                 product_name: 'Litter Scoop',
                 description: 'Scoop up your cat\'s litter with ease using this handy tool.',
-                picture_url: 'https://example.com/litter_scoop.jpg',
+                picture_url: 'http://localhost:8080/images/litter+scoop.jpeg',
                 color: 'Assorted colors',
                 price: 2,
                 category_id: categories[1].category_id, // Use the category_id of the "Cat supplies" category
@@ -67,7 +67,7 @@ const seedDatabase = async () => {
             {
                 product_name: 'Cat Litter 10kg',
                 description: 'High-quality cat litter that absorbs odors and keeps your home fresh.',
-                picture_url: 'https://example.com/cat_litter.jpg',
+                picture_url: 'http://localhost:8080/images/cat+litter.jpeg',
                 color: 'Assorted scents',
                 price: 18,
                 category_id: categories[1].category_id, // Use the category_id of the "Cat supplies" category
@@ -76,7 +76,7 @@ const seedDatabase = async () => {
             {
                 product_name: 'Backpack Carrier Blue',
                 description: 'Take your adventurous kitty on outdoor trips in style with this comfortable backpack carrier.',
-                picture_url: 'https://example.com/backpack_carrier_blue.jpg',
+                picture_url: 'http://localhost:8080/images/cat+carrier+blue.png',
                 color: 'Blue',
                 price: 25,
                 category_id: categories[1].category_id, // Use the category_id of the "Cat supplies" category
