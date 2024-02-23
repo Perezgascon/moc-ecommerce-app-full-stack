@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard'
 import PaymentPage from './pages/PaymentPage'
 import ProductPage from './pages/ProductPage'
 import NotFound from './pages/NotFound'
+import Footer from './components/Footer'
 // import LogInPage from './pages/LogInPage'
 // import RegisterPage from './pages/RegisterPage'
 // import ProtectedRoute from './components/ProtectedRoute'
@@ -21,6 +22,7 @@ export default function App() {
     <div>
       <Router>
         <Navbar />
+        <Footer />
         <Routes>
           {/* <Route path="/login" element={<LogInPage />} /> */}
           {/* <Route path="/register" element={<RegisterPage />} /> */}
