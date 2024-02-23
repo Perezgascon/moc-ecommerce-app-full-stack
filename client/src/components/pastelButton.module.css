@@ -1,23 +1,24 @@
-.goBackButton {
-    position: sticky;
+.pastelButton {
+    position: absolute;
     display: flex;
     top: 140px;
-    align-items: center;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border-radius: 30px;
-    width: 15%;
+    width: 40%;
     cursor: pointer;
     text-align: center;
     border: dashed 1px #f7a38b;
     background-color: rgba(247, 163, 139, 0.25);
-    margin-left: 100px;
-    padding: 15px 25px;
+    margin-left: 25px;
 }
 
-.goBackButtonText {
+.pastelButtonText {
     text-transform: uppercase;
-    float: right;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+}
+
+.arrowIcon {
+    font-size: 1.2rem;
 }
 
 /* redundant code that is used multiple times */
@@ -30,20 +31,46 @@
 }
 
 @media screen and (min-width: 375px) {
-
+    
+    .pastelButtonText {
+        font-size: 0.9rem;
+    }
+    
+    .arrowIcon {
+        margin-top: 2px;
+        font-size: 1.4rem;
+    }
 
 }
 @media screen and (min-width: 481px) {
-  
+    .pastelButton {
+        width: 30%;
+    }
+
 
 }
 
 @media screen and (min-width: 600px) {
-
+    .pastelButton {
+        width: 40%;
+    }
 }
 
 @media screen and (min-width: 769px) {
+    .pastelButton {
+        padding: 12px 20px;
+        width: 12%;
+        margin-left: 150px;
+    }
     
+    .pastelButtonText {
+        font-size: 0.8rem;
+    }
+    
+    .arrowIcon {
+        margin-top: 2px;
+        font-size: 1.4rem;
+    }
 
 }
 

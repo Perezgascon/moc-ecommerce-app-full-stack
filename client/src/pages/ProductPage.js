@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'; // Import the useParams hook
-import GoBackButton from '../components/GoBackButton';
+import PastelButton from '../components/PastelButton';
 import ShoppingCartButton from '../components/ShoppingCartButton';
 import GreenButton from '../components/GreenButton';
 import styles from './productPage.module.css'; // Import CSS module
@@ -87,7 +87,7 @@ const ProductPage = () => {
 
     return (
         <div>
-            <GoBackButton />
+            <PastelButton message={"Back to categories"} destination={"/dashboard"}/>
             <ShoppingCartButton />
             <div className={styles.productMainContainer}>
                 <h1 className={styles.productName}>{product.product_name}</h1>

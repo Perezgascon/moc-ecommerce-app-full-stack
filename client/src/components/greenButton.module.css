@@ -1,13 +1,13 @@
 .greenButton {
     padding: 15px 25px;
     border: none;
-    border-radius: 25px;
-    width: 20%;
+    border-radius: 30px;
+    width: 40%;
     cursor: pointer;
     text-align: center;
     background-color: hsl(165, 56%, 33%);
     color: white;
-    margin: 30px auto;
+    margin-bottom: 20px;
 }
 
 
@@ -21,11 +21,17 @@
 }
 
 @media screen and (min-width: 600px) {
-
+    .greenButton {
+        width: 30%;
+    }
 }
 
 @media screen and (min-width: 769px) {
-    
+    .greenButton {
+        padding: 15px 25px;
+        width: 15%;
+        font-size: 1rem;
+    }
 
 }
 

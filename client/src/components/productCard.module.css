@@ -1,12 +1,15 @@
 .productCard {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border-radius: 20px;
-    width: 30%;
-    height: 30%;
+    text-align: center;
+    width: 80%;
+    height: 20%;
     margin: 10px 1rem;
     cursor: pointer;
+}
+
+.productCard p {
+    font-size: 0.75rem;
 }
 
 .productCard img {
@@ -43,15 +46,17 @@
 
 @media screen and (min-width: 769px) {
     
-    .product-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 20px;
+    .productCard {
         width: 30%;
         height: 30%;
-        margin: 10px 1rem;
-        cursor: pointer;
+    }
+
+    .productCard h3 {
+        font-size: 1.25rem;
+    }
+
+    .productCard p {
+        font-size: 1rem;
     }
 
     .product-card img {

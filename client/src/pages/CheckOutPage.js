@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './checkOutPage.module.css';
 import ClearCartButton from '../components/ClearCartButton';
-import GoBackButton from '../components/GoBackButton';
+import PastelButton from '../components/PastelButton';
 import GreenButton from '../components/GreenButton';
 
 export default function CheckOutPage() {
@@ -33,7 +33,7 @@ export default function CheckOutPage() {
 
   return (
     <div>
-      <GoBackButton />
+      <PastelButton />
       <ClearCartButton />
       <div className={styles.checkOutMainContainer}>
         <h1>Your Order</h1>
