@@ -2,8 +2,7 @@
 
 .navbar {
     background-color: hsl(165, 56%, 33%);
-    color: white;
-    padding: 20px;
+    padding: 35px;
     text-transform: uppercase;
 }
 
@@ -13,10 +12,11 @@
     font-family: 'Didact Gothic', sans-serif;
     font-size: 1.25rem;
     font-weight: bolder;
+    color: white; /* Make the text white */
 }
 
 .navbarMenu {
-    /* display: none; */
+    display: none;
     background-color: hsl(165, 56%, 33%);
     flex-direction: column;
     align-items: center;
@@ -29,10 +29,13 @@
     margin: 10px 0;
 }
 
-#visitUsButton {
-    background-color: hsl(165, 56%, 33%);
-    padding: 0;
-    color: white;
+.navbarMenu li a {
+    color: white; 
+    text-decoration: none; /* Remove hyperlink underline */
+}
+
+.navbarMenu li a:hover {
+    text-decoration: none; 
 }
 
 .hamburger {
@@ -41,6 +44,7 @@
     font-size: 2rem;
     float: right;
     margin-top: 15px;
+    color: white;
 }
 
 .menuIcon {
@@ -51,13 +55,20 @@
     display: flex;
 }
 
+.visitUsButton {
+    background-color: hsl(165, 56%, 33%);
+    padding: 15px 30px;
+    border-radius: 25px;
+    display: none;
+}
+
+
 @media screen and (min-width: 375px) {
 
 
 }
 @media screen and (min-width: 481px) {
-  
-
+   
 }
 
 @media screen and (min-width: 600px) {
@@ -65,11 +76,6 @@
 }
 
 @media screen and (min-width: 769px) {
-
-}
-
-@media screen and (min-width: 1025px) {
-
     .navbarMenu {
         display: inline-block;
         position: absolute;
@@ -84,16 +90,23 @@
         font-size: 0.80rem;
     }
 
-
-    #visitUsButton {
+    .visitUsButton {
         background-color: #f7a38b;
         padding: 15px 30px;
         border-radius: 25px;
-        color: black;
+        color: black !important;
+        display: inline-block;
     }
 
     .hamburger {
         display: none;
     }
+    
+
+
+}
+
+@media screen and (min-width: 1025px) {
+   
 
 }

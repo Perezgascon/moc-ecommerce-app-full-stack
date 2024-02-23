@@ -48,18 +48,21 @@ const ProductPage = () => {
                 if (userOrders.length > 0) {
                     return userOrders[0];
                 } else {
+                    // If no user orders exist, create a new order
                     return fetch(`http://localhost:8080/orders`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({})
                     })
-                    .then(response => {
-                        if (!response.ok) throw new Error('Failed to create new order');
-                        return response.json();
-                    });
+                        .then(response => {
+                            if (!response.ok) throw new Error('Failed to create new order');
+                            return response.json();
+                        });
                 }
             })
             .then(order => {
+                // Handle the case where order is undefined
+                if (!order) throw new Error('Failed to create or find order');
                 // Adjusted POST request URL to match expected endpoint format
                 return fetch(`http://localhost:8080/orderItems/orders/${order.order_id}/add-item`, {
                     method: 'POST',
@@ -76,7 +79,7 @@ const ProductPage = () => {
             })
             .catch(error => console.error('Error adding product to shopping cart:', error));
     }
-    
+
 
 
 
