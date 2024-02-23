@@ -38,74 +38,47 @@ const ProductPage = () => {
     }
 
     function handleAddToCart() {
-        // Step 1: Check if the user has any existing orders
         fetch(`http://localhost:8080/orders`)
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch user orders');
-                }
+                if (!response.ok) throw new Error('Failed to fetch user orders');
                 return response.json();
             })
             .then(orders => {
-                console.log('User Orders:', orders);
-                const userOrders = orders.filter(order => order.user); // Filter orders by user ID
+                const userOrders = orders.filter(order => order.user);
                 if (userOrders.length > 0) {
-                    // If the user has existing orders, use the most recent order
-                    const mostRecentOrder = userOrders[0]; // Assuming the orders are sorted by date in descending order
-                    console.log('Most Recent Order:', mostRecentOrder);
-                    return mostRecentOrder;
+                    return userOrders[0];
                 } else {
-                    // If the user doesn't have any existing orders, create a new order
-                    console.log('No existing orders found. Creating a new order...');
                     return fetch(`http://localhost:8080/orders`, {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            // Optionally, you can include any additional data for the order creation
-                        })
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({})
                     })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Failed to create new order');
-                            }
-                            return response.json();
-                        })
-                        .then(newOrder => {
-                            console.log('New Order:', newOrder);
-                            return newOrder;
-                        });
+                    .then(response => {
+                        if (!response.ok) throw new Error('Failed to create new order');
+                        return response.json();
+                    });
                 }
             })
             .then(order => {
-                // Step 2: Add the selected product to the order as an order item
-                console.log('Adding product to order:', order);
-                return fetch(`http://localhost:8080/orderItems`, {
+                // Adjusted POST request URL to match expected endpoint format
+                return fetch(`http://localhost:8080/orderItems/orders/${order.order_id}/add-item`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        orderId: order.order_id, // Use the order ID from the previous step
-                        productId: product.product_id, // Use the product ID of the selected product
-                        quantity: 1 // You may allow the user to specify the quantity
+                        productId: product.product_id,
+                        quantity: 1
                     })
                 });
             })
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to add product to order');
-                }
+                if (!response.ok) throw new Error('Failed to add product to order');
                 alert('Product added to shopping cart');
-                // Optionally, you can redirect the user to the shopping cart page or display a success message
-                navigate('/checkout');
             })
-            .catch(error => {
-                console.error('Error adding product to shopping cart:', error);
-                // Handle errors (e.g., display an error message to the user)
-            });
+            .catch(error => console.error('Error adding product to shopping cart:', error));
     }
+    
+
+
 
 
 
