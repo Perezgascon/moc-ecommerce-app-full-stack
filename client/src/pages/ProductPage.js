@@ -37,35 +37,50 @@ const ProductPage = () => {
         return <div>Loading...</div>;
     }
 
-    function handleClick() {
-        // Step 1: Check if an order exists for the current user
+    function handleAddToCart() {
+        // Step 1: Check if the user has any existing orders
         fetch(`http://localhost:8080/orders`)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Failed to fetch user order');
+                    throw new Error('Failed to fetch user orders');
                 }
                 return response.json();
             })
             .then(orders => {
-                // Find the order for the current user
-                const userOrder = orders.find(order => order.user === 'YOUR_AUTH_TOKEN');
-                if (!userOrder) {
-                    // If no order exists, create a new order
+                console.log('User Orders:', orders);
+                const userOrders = orders.filter(order => order.user); // Filter orders by user ID
+                if (userOrders.length > 0) {
+                    // If the user has existing orders, use the most recent order
+                    const mostRecentOrder = userOrders[0]; // Assuming the orders are sorted by date in descending order
+                    console.log('Most Recent Order:', mostRecentOrder);
+                    return mostRecentOrder;
+                } else {
+                    // If the user doesn't have any existing orders, create a new order
+                    console.log('No existing orders found. Creating a new order...');
                     return fetch(`http://localhost:8080/orders`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            user: 'YOUR_AUTH_TOKEN' // Include the user ID or authentication token
+                            // Optionally, you can include any additional data for the order creation
                         })
-                    });
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Failed to create new order');
+                            }
+                            return response.json();
+                        })
+                        .then(newOrder => {
+                            console.log('New Order:', newOrder);
+                            return newOrder;
+                        });
                 }
-                return userOrder; // Return the existing order
             })
-            .then(response => response.json())
             .then(order => {
                 // Step 2: Add the selected product to the order as an order item
+                console.log('Adding product to order:', order);
                 return fetch(`http://localhost:8080/orderItems`, {
                     method: 'POST',
                     headers: {
@@ -105,7 +120,7 @@ const ProductPage = () => {
                     {/* Product colors content */}
                 </div>
                 <div className={styles.productDescription}>{product.description}</div>
-                <GreenButton message={"Add to shopping cart"} handleClick={handleClick} />
+                <GreenButton message={"Add to shopping cart"} handleClick={handleAddToCart} />
             </div>
         </div>
     );

@@ -5,6 +5,9 @@ const OrderItemsControllers = require('../controllers/orderItemsControllers');
 // get all products
 router.get('/', OrderItemsControllers.getAllOrderItems);
 
+// get order items with product details
+router.get('/withProductDetails', OrderItemsControllers.getOrderItemsWithProductDetails);
+
 // get a product by id
 router.get('/:id', OrderItemsControllers.getOrderItemById);
 

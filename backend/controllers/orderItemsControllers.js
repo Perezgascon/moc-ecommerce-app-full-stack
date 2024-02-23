@@ -1,5 +1,6 @@
 // import the model
 const { OrderItem } = require('../models/orderItemsModel');
+const { Product } = require('../models/productsModel');
 
 // get all order items
 exports.getAllOrderItems = async (req, res) => {
@@ -10,6 +11,19 @@ exports.getAllOrderItems = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
+
+// Get order items with product details
+exports.getOrderItemsWithProductDetails = async (req, res) => {
+    try {
+      const orderItemsWithProductDetails = await OrderItem.findAll({
+        include: Product, // Include the Product model to fetch product details
+      });
+      res.json(orderItemsWithProductDetails);
+    } catch (error) {
+      console.error('Error fetching order items with product details:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  };
 
 // get an order item by id
 exports.getOrderItemById = async (req, res) => {

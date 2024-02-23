@@ -19,9 +19,6 @@ app.get('/health', (req, res) => {
     res.send("It's Alive!");
 });
 
-app.get('/protected', authenticateJWT, (req, res) => {
-    res.send('This is a protected route');
-});
 
 app.use('/images', express.static('images'));
 
@@ -37,7 +34,7 @@ const categoriesRoutes = require('./routes/categoriesRoutes');
 // use routes
 app.use('/products', productsRoutes.modules);
 app.use('/orders', ordersRoutes.modules);
-app.use('/orderitems', orderItemsRoutes.modules);
+app.use('/orderItems', orderItemsRoutes.modules);
 app.use('/users', usersRoutes.modules);
 app.use('/categories', categoriesRoutes.modules);
 

@@ -20,7 +20,7 @@ const OrderItem = sequelize.define('orderItems', {
     },
     // ForeignKey to Product
     productId: {
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
         references: {
             model: 'Product',
             key: 'product_id'

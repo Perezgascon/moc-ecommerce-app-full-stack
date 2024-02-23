@@ -29,10 +29,11 @@ router.post('/register', async (req, res) => {
 
         // create the user
         const user = await User.create({
-            email: req.body.email,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
             password: hashedPassword,
-            first_name: req.body.firstName,
-            last_name: req.body.lastName
+            address: req.body.address,
+            email: req.body.email,
         });
 
         // send the user back

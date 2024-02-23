@@ -40,7 +40,7 @@ const seedDatabase = async () => {
             {
                 product_name: 'Cat Collar',
                 description: 'A stylish collar for your feline friend. Choose the colour you like.',
-                picture_url: 'https://example.com/cat_collar.jpg',
+                picture_url: 'images/banadana+yellow.jpeg',
                 color: null, // No color specified for this product
                 price: 4,
                 category_id: categories[0].category_id, // Use the category_id of the "Cat accessories" category
