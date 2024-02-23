@@ -33,7 +33,7 @@ export default function CheckOutPage() {
 
   return (
     <div>
-      <PastelButton />
+      <PastelButton message={"Go back to categories"} destination={"/dashboard"}/>
       <ClearCartButton />
       <div className={styles.checkOutMainContainer}>
         <h1>Your Order</h1>

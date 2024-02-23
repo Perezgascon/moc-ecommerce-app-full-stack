@@ -1,8 +1,8 @@
-import React from 'react'
-import styles from './clearCartButton.module.css'
+import React from 'react';
+import styles from './clearCartButton.module.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'; // Import the shopping cart icon
 
 export default function ClearCartButton({ orderId }) {
 
@@ -12,6 +12,8 @@ export default function ClearCartButton({ orderId }) {
             await axios.delete(`http://localhost:8080/orders/${orderId}`);
             // Optionally, you can also update the local state or display a success message
             alert('Cart cleared successfully');
+            // Navigate to the dashboard after clearing the cart
+            window.location.href = "/dashboard";
         } catch (error) {
             console.error('Error clearing cart:', error);
             // Handle errors, display error messages, etc.
@@ -19,10 +21,11 @@ export default function ClearCartButton({ orderId }) {
     };
 
     return (
-        <Link to={"/dashboard"} className={styles.productLink}>
-            <button className={styles.clearButton} onClick={handleClearCart}><label class="shopping-cart-icon"><i class="fa-solid fa-cart-shopping"></i></label>
-                <p>Clear my cart</p>
-            </button>
-        </Link>
-    )
+        <button className={styles.clearCartButton} onClick={handleClearCart}>
+            <div className={styles.shoppingCartIcon}>
+                <FontAwesomeIcon icon={faCartShopping} /> {/* Use the Font Awesome shopping cart icon */}
+            </div>
+            <p>Clear my cart</p>
+        </button>
+    );
 }

@@ -1,47 +1,50 @@
-.clearButton {
-    position: sticky;
+.clearCartButton {
+    position: absolute;
     display: flex;
     justify-content: space-around;
     align-items: center;
     top: 140px;
-    left: 1100px;
+    right: 35px;
     background-color: rgb(54, 191, 157, 0.10);
     border: dashed 1px hsl(165, 56%, 33%);
     border-radius: 25px;
-    width: 15%;
+    width: 40%;
     padding: 15px;
     font-weight: 500;
     text-transform: uppercase;
     cursor: pointer;
 }
 
-.clearButton a {
-    color: black;
+.shoppingCartIcon {
+    font-size: 0.8rem;
 }
-
-.productLink {
-    text-decoration: none; /* Remove underlining */
-    color: inherit; /* Inherit text color */
-    display: inline-block; /* Ensure each link behaves like a block element */
-    width: 100%; /* Ensure each link takes up the full width of its container */
-}
-
 
 @media screen and (min-width: 375px) {
 
 
 }
 @media screen and (min-width: 481px) {
-  
+    .clearCartButton {
+        width: 35%;
+    }
 
 }
 
 @media screen and (min-width: 600px) {
-
+    .clearCartButton {
+        width: 30%;
+    }
 }
 
 @media screen and (min-width: 769px) {
-    
+    .clearCartButton {
+        width: 15%;
+        font-size: 0.9rem;
+    }
+
+    .shoppingCartIcon {
+        font-size: 1rem;
+    }
 
 }
 
