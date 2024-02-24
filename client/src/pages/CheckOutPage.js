@@ -4,10 +4,12 @@ import styles from './checkOutPage.module.css';
 import ClearCartButton from '../components/ClearCartButton';
 import PastelButton from '../components/PastelButton';
 import GreenButton from '../components/GreenButton';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 
 export default function CheckOutPage() {
   const [orderItems, setOrderItems] = useState([]);
   const [orderTotal, setOrderTotal] = useState(0);
+  const navigate = useNavigate(); // Assign useNavigate to navigate
 
   useEffect(() => {
     const fetchOrderItems = async () => {
@@ -31,6 +33,11 @@ export default function CheckOutPage() {
     setOrderTotal(total.toFixed(2));
   };
 
+  const handleClick = () => {
+    // Navigate to the payment page route
+    navigate('/payment'); // Adjust the route as needed
+  };
+
   return (
     <div>
       <PastelButton message={"Go back to categories"} destination={"/dashboard"}/>
@@ -49,7 +56,7 @@ export default function CheckOutPage() {
         <div className={styles.totalContainer}>
           <p>Total: ${orderTotal}</p>
         </div>
-        <GreenButton message={"CHECKOUT"} />
+        <GreenButton message={"CHECKOUT"} handleClick={handleClick} />
       </div>
     </div>
   );
