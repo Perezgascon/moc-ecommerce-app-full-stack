@@ -33,6 +33,7 @@
 @media screen and (min-width: 600px) {
     .shoppingCart {
         width: 30%;
+        right: 150px;
     }
 
 }

@@ -1,0 +1,63 @@
+.paymentMainContainer h1 {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.paymentContainer {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+
+}
+
+.paymentContainer img {
+    width: 3rem;
+    border-radius: 5px;
+}
+
+.paymentContainer div {
+    text-align: center;
+}
+
+
+.paymentOptionIcon {
+    font-size: 3rem;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 375px) {
+
+
+}
+@media screen and (min-width: 481px) {
+  
+
+}
+
+@media screen and (min-width: 600px) {
+
+}
+
+@media screen and (min-width: 769px) {
+
+    .paymentMainContainer {
+        margin-top: 80px;
+    
+    }
+
+    .paymentOption {
+    margin: 10px auto;
+    border: solid 1px hsl(165, 56%, 33%);
+    border-radius: 100%;
+    width: 5%;
+}
+
+}
+
+@media screen and (min-width: 1025px) {
+   
+
+}
+

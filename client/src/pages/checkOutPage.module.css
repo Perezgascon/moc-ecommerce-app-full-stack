@@ -1,9 +1,11 @@
 .checkOutMainContainer {
+    margin-top: 100px;
     text-align: center;
 }
 
 .checkOutMainContainer h1 {
     text-align: center;
+    margin-bottom: 10px;
 }
 
 #order-container {
@@ -53,7 +55,9 @@
 }
 
 @media screen and (min-width: 769px) {
-    
+    .checkOutMainContainer h1 {
+        margin-bottom: 20px;
+    }
 
 }
 
