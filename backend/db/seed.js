@@ -90,16 +90,16 @@ const seedDatabase = async () => {
             order_id: uuidv4(),
             user: user.user_id,
             order_date: new Date(),
-            total_amount: 10 * 2 + 20 * 3 + 30 + 40 + 50, // Example calculation, adjust as needed
+            total_amount: 0
         });
 
-        await OrderItem.bulkCreate([
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[0].product_id, quantity: 2 },
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[1].product_id, quantity: 3 },
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[2].product_id, quantity: 1 },
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[3].product_id, quantity: 1 },
-            { orderItemId: uuidv4(), orderId: order.order_id, productId: products[4].product_id, quantity: 1 },
-        ]);
+        // await OrderItem.bulkCreate([
+        //     { orderItemId: uuidv4(), orderId: order.order_id, productId: products[0].product_id, quantity: 2 },
+        //     { orderItemId: uuidv4(), orderId: order.order_id, productId: products[1].product_id, quantity: 3 },
+        //     { orderItemId: uuidv4(), orderId: order.order_id, productId: products[2].product_id, quantity: 1 },
+        //     { orderItemId: uuidv4(), orderId: order.order_id, productId: products[3].product_id, quantity: 1 },
+        //     { orderItemId: uuidv4(), orderId: order.order_id, productId: products[4].product_id, quantity: 1 },
+        // ]);
 
         // Note: Add more products as needed for each category.
 

@@ -2,19 +2,26 @@ const express = require('express');
 const router = express.Router();
 const OrdersControllers = require('../controllers/ordersControllers');
 
-// get all products
+// get all orders
 router.get('/', OrdersControllers.getAllOrders);
 
-// get a product by id
+// get an order by id
 router.get('/:id', OrdersControllers.getOrderById);
 
-// create a new product
+// create a new order
 router.post('/', OrdersControllers.createOrder);
 
-// update a product by id
+// update an order by id
 router.put('/:id', OrdersControllers.updateOrderById);
 
-// delete a product by id
+// delete an order by id
 router.delete('/:id', OrdersControllers.deleteOrderById);
+
+// clear an order by id
+router.delete('/:id/clear', OrdersControllers.clearOrderById);
+
+// get order total by id
+
+router.get('/:id/total', OrdersControllers.getTotalPriceOrder)
 
 exports.modules = router;

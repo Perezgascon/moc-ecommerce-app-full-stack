@@ -1,0 +1,52 @@
+
+.h1 {
+    margin: 20px auto;
+}
+
+.h2 {
+    margin: 20px auto;
+}
+
+.p {
+    margin-bottom: 40px;
+}
+
+
+.paymentsMainContainer {
+    text-align: center;
+    margin: 10px auto;
+    padding: 30px;
+}
+
+
+.qrCode {
+    width: 45%;
+    border: solid 1px black;
+}
+
+@media screen and (min-width: 375px) {
+
+
+}
+@media screen and (min-width: 481px) {
+    .qrCode {
+        width: 30%;
+    }
+
+}
+
+@media screen and (min-width: 600px) {
+    .qrCode {
+        width: 25%;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    
+
+}
+
+@media screen and (min-width: 1025px) {
+   
+
+}

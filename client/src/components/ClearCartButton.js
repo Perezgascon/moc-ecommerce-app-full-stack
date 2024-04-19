@@ -9,7 +9,7 @@ export default function ClearCartButton({ orderId }) {
     const handleClearCart = async () => {
         try {
             // Make a DELETE request to the endpoint to clear the cart
-            await axios.delete(`http://localhost:8080/orders/${orderId}`);
+            await axios.delete(`http://localhost:8080/orders/${orderId}/clear`);
             // Optionally, you can also update the local state or display a success message
             alert('Cart cleared successfully');
             // Navigate to the dashboard after clearing the cart

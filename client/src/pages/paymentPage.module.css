@@ -4,9 +4,10 @@
 }
 
 .paymentContainer {
+    display: flex;
     margin-top: 40px;
     margin-bottom: 40px;
-    text-align: center;
+    justify-content: space-around;
 
 }
 
@@ -27,37 +28,33 @@
     margin-bottom: 10px;
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 375px) {}
 
+@media screen and (min-width: 481px) {}
 
-}
-@media screen and (min-width: 481px) {
-  
-
-}
-
-@media screen and (min-width: 600px) {
-
-}
+@media screen and (min-width: 600px) {}
 
 @media screen and (min-width: 769px) {
 
+
+    .paymentContainer {
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
     .paymentMainContainer {
         margin-top: 80px;
-    
+
     }
 
     .paymentOption {
-    margin: 10px auto;
-    border: solid 1px hsl(165, 56%, 33%);
-    border-radius: 100%;
-    width: 5%;
-}
+        margin: 10px auto;
+        border: solid 1px hsl(165, 56%, 33%);
+        border-radius: 100%;
+        width: 5%;
+    }
 
 }
 
-@media screen and (min-width: 1025px) {
-   
-
-}
-
+@media screen and (min-width: 1025px) {}

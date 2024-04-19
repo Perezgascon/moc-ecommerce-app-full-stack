@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 export default function CheckOutPage() {
   const [orderItems, setOrderItems] = useState([]);
   const [orderTotal, setOrderTotal] = useState(0);
+  const [orderId, setOrderId] = useState(null);
   const navigate = useNavigate(); // Assign useNavigate to navigate
 
   useEffect(() => {
@@ -17,6 +18,7 @@ export default function CheckOutPage() {
         const response = await axios.get('http://localhost:8080/orderItems/withProductDetails/');
         setOrderItems(response.data);
         calculateOrderTotal(response.data);
+        setOrderId(response.data[0].orderId);
       } catch (error) {
         console.error('Error fetching order items:', error);
       }
@@ -41,7 +43,7 @@ export default function CheckOutPage() {
   return (
     <div>
       <PastelButton message={"Go back to categories"} destination={"/dashboard"}/>
-      <ClearCartButton />
+      <ClearCartButton orderId={orderId} />
       <div className={styles.checkOutMainContainer}>
         <h1>Your Order</h1>
         <div id="order-container">

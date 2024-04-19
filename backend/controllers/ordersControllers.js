@@ -1,6 +1,8 @@
 // import the model
 const { Order } = require('../models/ordersModel');
 const { OrderItem } = require('../models/orderItemsModel')
+const { Product } = require('../models/productsModel');
+
 
 // get all orders
 exports.getAllOrders = async (req, res) => {
@@ -71,3 +73,45 @@ exports.deleteOrderById = async (req, res) => {
         res.status(500).json({ error: 'An error occurred while deleting order and associated items' });
     }
 };
+
+//clear an order by id
+exports.clearOrderById = async (req, res) => {
+    try {
+        const orderId = req.params.id;
+        // Delete all order items associated with the order
+        await OrderItem.destroy({ where: { orderId } });
+        res.status(200).json({ message: 'Order items deleted successfully' });
+
+    } catch (error) {
+        console.error('Error deleting order and associated items:', error);
+        res.status(500).json({ error: 'An error occurred while deleting order and associated items' });
+    }
+
+};
+//get total price of order
+exports.getTotalPriceOrder = async (req, res) => {
+    try {
+        const orderId = req.params.id;
+
+        // Find all order items associated with the order, including the Product details
+        const orderItems = await OrderItem.findAll({
+            where: { orderId },
+            include: { model: Product }
+        });
+
+        // Calculate the total price by summing up the prices of all products in the order
+        let totalPrice = 0;
+        orderItems.forEach((orderItem) => {
+            if (orderItem.Product) { // Check if the Product is defined
+                totalPrice += parseFloat(orderItem.Product.price) * orderItem.quantity;
+            }
+        });
+
+        res.status(200).json({ totalPrice });
+    } catch (error) {
+        console.error('Error getting total price of order:', error);
+        res.status(500).json({ error: 'An error occurred while getting total price of order' });
+    }
+};
+
+
