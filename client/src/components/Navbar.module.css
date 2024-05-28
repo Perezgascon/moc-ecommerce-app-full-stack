@@ -2,17 +2,23 @@
 
 .navbar {
     background-color: hsl(165, 56%, 33%);
-    padding: 35px;
+    padding: 10px;
     text-transform: uppercase;
+    font-family: 'Proxima Nova', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 2.33px;
 }
 
 .seoTitle {
     clear: right;
     display: inline-block;
-    font-family: 'Didact Gothic', sans-serif;
-    font-size: 1.25rem;
-    font-weight: bolder;
-    color: white; /* Make the text white */
+    font-family: 'futura-pt', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: white;
+    /* Make the text white */
 }
 
 .navbarMenu {
@@ -30,12 +36,13 @@
 }
 
 .navbarMenu li a {
-    color: white; 
-    text-decoration: none; /* Remove hyperlink underline */
+    color: white;
+    text-decoration: none;
+    /* Remove hyperlink underline */
 }
 
 .navbarMenu li a:hover {
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 .hamburger {
@@ -57,29 +64,28 @@
 
 .visitUsButton {
     background-color: hsl(165, 56%, 33%);
-    padding: 15px 30px;
+    padding: 1em 1.5em !important;
     border-radius: 25px;
     display: none;
 }
 
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 375px) {}
 
+@media screen and (min-width: 481px) {}
 
-}
-@media screen and (min-width: 481px) {
-   
-}
-
-@media screen and (min-width: 600px) {
-
-}
+@media screen and (min-width: 600px) {}
 
 @media screen and (min-width: 769px) {
+
+}
+
+@media screen and (min-width: 1151px) {
+
     .navbarMenu {
         display: inline-block;
         position: absolute;
-        top: 30px;
+        top: 10px;
         right: 0;
         margin-top: 25px;
     }
@@ -91,22 +97,22 @@
     }
 
     .visitUsButton {
-        background-color: #f7a38b;
+        background-color: #fff;
         padding: 15px 30px;
         border-radius: 25px;
-        color: black !important;
+        color: hsl(165, 56%, 33%) !important;
         display: inline-block;
+        transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    }
+
+    .visitUsButton:hover {
+        background-color: hsl(0, 0%, 95%);
     }
 
     .hamburger {
         display: none;
     }
     
-
-
 }
 
-@media screen and (min-width: 1025px) {
-   
-
-}
+@media screen and (min-width: 1025px) {}

@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <p className={styles.seoTitle}>Ministry of Cat |<br /> Cat Cafe in Phnom Penh</p>
+      <p className={styles.seoTitle}>Ministry of Cat |<br /> Cat Cafe in <br />Phnom Penh</p>
       <input
         type="checkbox"
         id="menu-toggle"

@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 import Navbar from './components/Navbar'
@@ -11,6 +11,8 @@ import ProductPage from './pages/ProductPage'
 import NotFound from './pages/NotFound'
 import Footer from './components/Footer'
 import PayPalPaymentPage from './pages/PayPalPaymentPage';
+import EnterYourAddress from './pages/EnterYourAddress';
+
 
 import './App.css';
 
@@ -34,6 +36,7 @@ export default function App() {
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/abapayment" element={<AbaPaymentPage />} />
             <Route path="/paypal/:orderId" element={<PayPalPaymentPage />} />
+            <Route path="/enter-your-address" element={<EnterYourAddress />} />
             <Route path="/product/:productId" element={<ProductPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -35,23 +35,60 @@ export default function CheckOutPage() {
     setOrderTotal(total.toFixed(2));
   };
 
+  const updateQuantity = async (orderItemId, quantity) => {
+    try {
+      await axios.put(`http://localhost:8080/orderItems/${orderItemId}`, { quantity });
+      const updatedOrderItems = orderItems.map(item =>
+        item.orderItemId === orderItemId ? { ...item, quantity } : item
+      );
+      setOrderItems(updatedOrderItems);
+      calculateOrderTotal(updatedOrderItems);
+    } catch (error) {
+      console.error('Error updating quantity:', error);
+    }
+  };
+
+  const removeItem = async (orderItemId) => {
+    try {
+      await axios.delete(`http://localhost:8080/orderItems/${orderItemId}`);
+      const updatedOrderItems = orderItems.filter(item => item.orderItemId !== orderItemId);
+      setOrderItems(updatedOrderItems);
+      calculateOrderTotal(updatedOrderItems);
+    } catch (error) {
+      console.error('Error removing item:', error);
+    }
+  };
+
+  const handleIncrease = (orderItemId, currentQuantity) => {
+    updateQuantity(orderItemId, currentQuantity + 1);
+  };
+
+  const handleDecrease = (orderItemId, currentQuantity) => {
+    if (currentQuantity > 1) {
+      updateQuantity(orderItemId, currentQuantity - 1);
+    }
+  };
+
   const handleClick = () => {
     // Navigate to the payment page route
-    navigate('/payment'); // Adjust the route as needed
+    navigate('/enter-your-address');
+
   };
 
   return (
     <div>
-      <PastelButton message={"Go back to categories"} destination={"/dashboard"}/>
+      <PastelButton message={"Go back to categories"} destination={"/dashboard"} />
       <ClearCartButton orderId={orderId} />
       <div className={styles.checkOutMainContainer}>
         <h1>Your Order</h1>
         <div id="order-container">
           {orderItems.map((orderItem) => (
-            <div key={orderItem.orderItemId}>
-              <p>Product Name: {orderItem.Product.product_name}</p>
+            <div key={orderItem.orderItemId} className={styles.orderItem}>
+              <p>{orderItem.Product.product_name}</p>
               <p>Quantity: {orderItem.quantity}</p>
-              {/* Add more details as needed */}
+              <button onClick={() => handleIncrease(orderItem.orderItemId, orderItem.quantity)}>+</button>
+              <button onClick={() => handleDecrease(orderItem.orderItemId, orderItem.quantity)}>-</button>
+              <button onClick={() => removeItem(orderItem.orderItemId)}>Remove</button>
             </div>
           ))}
         </div>

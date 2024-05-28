@@ -3,6 +3,16 @@
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    
 }
 
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('./fonts/Mark Simonson  Proxima Nova Regular.otf') format('opentype');
+    /* You can also add additional font-weight and font-style here */
+}
+
+@font-face {
+    font-family: 'futura-pt';
+    src: url('./fonts/FuturaCyrillicMedium.ttf') format('opentype');
+    /* You can also add additional font-weight and font-style here */
+}

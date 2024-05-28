@@ -83,4 +83,21 @@ router.get('/verifyToken', authenticateJWT, async (req, res) => {
     res.status(200).send({ message: 'Token is valid.' });
 });
 
+// update user information
+
+router.put('/:userId', async (req, res) => {
+    try {
+        const user = await User.findByPk(req.params.userId);
+        if (user) {
+            user.address = req.body.address;
+            await user.save();
+            res.status(200).json(user);
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
 exports.modules = router;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import axios from 'axios';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-export default function PayPalPaymentPage({ orderId }) {
-    // const { orderId } = useParams(); 
+export default function PayPalPaymentPage() {
+    const { orderId } = useParams(); 
 
     const [totalAmount, setTotalAmount] = useState(null);
 
