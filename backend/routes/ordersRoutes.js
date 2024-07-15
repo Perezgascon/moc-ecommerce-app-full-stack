@@ -5,6 +5,9 @@ const OrdersControllers = require('../controllers/ordersControllers');
 // get all orders
 router.get('/', OrdersControllers.getAllOrders);
 
+// send order email
+router.post('/send-email', OrdersControllers.sendOrderEmail);
+
 // get an order by id
 router.get('/:id', OrdersControllers.getOrderById);
 
@@ -22,6 +25,7 @@ router.delete('/:id/clear', OrdersControllers.clearOrderById);
 
 // get order total by id
 
-router.get('/:id/total', OrdersControllers.getTotalPriceOrder)
+router.get('/:id/total', OrdersControllers.getTotalPriceOrder);
+
 
 exports.modules = router;

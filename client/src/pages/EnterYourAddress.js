@@ -56,7 +56,7 @@ export default function EnterYourAddress() {
     return (
         <div className={styles.addressFormContainer}>
             <h1>Enter Your Address</h1>
-            <form onSubmit={handleSubmit}>
+            <form className={styles.contactForm} onSubmit={handleSubmit}>
                 {!isLoggedIn && (
                     <>
                         <label>
@@ -68,7 +68,7 @@ export default function EnterYourAddress() {
                                 required
                             />
                         </label>
-                        <label>
+                        <label className={styles.lastName}>
                             Last Name:
                             <input
                                 type="text"
@@ -106,7 +106,7 @@ export default function EnterYourAddress() {
                     Click this box if you would like to pick up your order at Ministry of Cat
                 </label>
                 <label>
-                    What Time Do You Want Your Delivery?
+                    What time do you want your delivery?
                     <Datetime
                         value={deliveryTime}
                         onChange={setDeliveryTime}

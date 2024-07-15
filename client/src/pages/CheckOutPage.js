@@ -83,12 +83,15 @@ export default function CheckOutPage() {
         <h1>Your Order</h1>
         <div id="order-container">
           {orderItems.map((orderItem) => (
-            <div key={orderItem.orderItemId} className={styles.orderItem}>
-              <p>{orderItem.Product.product_name}</p>
-              <p>Quantity: {orderItem.quantity}</p>
-              <button onClick={() => handleIncrease(orderItem.orderItemId, orderItem.quantity)}>+</button>
-              <button onClick={() => handleDecrease(orderItem.orderItemId, orderItem.quantity)}>-</button>
-              <button onClick={() => removeItem(orderItem.orderItemId)}>Remove</button>
+            <div key={orderItem.orderItemId} className={styles.orderItemContainer}>
+              <div className={styles.orderItem}>
+                <p>{orderItem.Product.product_name} x {orderItem.quantity}</p>
+                <div className={styles.orderItemButtons}>
+                  <button className={styles.changeOrderButton} onClick={() => handleIncrease(orderItem.orderItemId, orderItem.quantity)}>+</button>
+                  <button className={styles.changeOrderButton} onClick={() => removeItem(orderItem.orderItemId)}>Remove</button>
+                  <button className={styles.changeOrderButton} onClick={() => handleDecrease(orderItem.orderItemId, orderItem.quantity)}>-</button>
+                </div>
+              </div>
             </div>
           ))}
         </div>

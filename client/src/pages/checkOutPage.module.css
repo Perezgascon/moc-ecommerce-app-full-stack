@@ -1,17 +1,11 @@
 .checkOutMainContainer {
-    margin-top: 100px;
+    margin-top: 150px;
     text-align: center;
 }
 
 .checkOutMainContainer h1 {
     text-align: center;
     margin-bottom: 10px;
-}
-
-#order-container {
-    margin: 60px auto;  
-    text-align: center;
-    font-size: 1.5rem;
 }
 
 .totalContainer {
@@ -39,6 +33,43 @@
 .clearButton a {
     color: black;
 }
+
+.changeOrderButton {
+    font-size: 0.75rem;
+    color: hsl(165, 56%, 33%);
+    border: solid 1px hsl(165, 56%, 33%);
+    padding: 5px;
+    border-radius: 10px;
+    margin: 3px 3px;
+    cursor: pointer;
+    
+}
+
+.orderItemContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.orderItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc; /* Optional: to separate items visually */
+    padding-bottom: 10px; /* Optional: to add some space below each item */
+    width: 50%;
+}
+
+.orderItem p {
+    margin: 0;
+}
+
+.orderItemButtons {
+    display: flex;
+    gap: 3px; /* Space between buttons */
+    margin-left: 40px;
+}
+
 
 
 @media screen and (min-width: 375px) {

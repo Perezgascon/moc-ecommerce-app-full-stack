@@ -9,7 +9,7 @@ export default function ProductCard({ product }) {
         <h3>{product.product_name}</h3>
         <p>{product.description}</p>
         <img src={product.picture_url} alt={product.product_name} />
-        <p>Price: ${product.price}</p>
+        <p className={styles.priceText}>${product.price}</p>
       </Link>
     </div >
   );

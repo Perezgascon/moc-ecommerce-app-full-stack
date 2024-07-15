@@ -3,6 +3,9 @@ const { Order } = require('../models/ordersModel');
 const { OrderItem } = require('../models/orderItemsModel')
 const { Product } = require('../models/productsModel');
 
+const nodemailer = require('nodemailer');
+const axios = require('axios');
+
 
 // get all orders
 exports.getAllOrders = async (req, res) => {
@@ -113,5 +116,49 @@ exports.getTotalPriceOrder = async (req, res) => {
         res.status(500).json({ error: 'An error occurred while getting total price of order' });
     }
 };
+
+exports.sendOrderEmail = async (req, res) => {
+    const { orderId, userDetails } = req.body;  // Expecting orderId and userDetails to be sent in the request body
+
+    // Log userDetails to verify it is received correctly
+    console.log('Received userDetails:', userDetails);
+
+    try {
+        // Fetch order details
+        const response = await axios.get('http://localhost:8080/orderItems/withProductDetails/');
+        const orderItems = response.data;
+
+        // Filter the order items by the provided orderId
+        const orderDetails = orderItems.filter(item => item.orderId === orderId);
+
+        if (orderDetails.length === 0) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+
+        // Configure Nodemailer transporter
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+
+        // Email options
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: 'adolfo@ministryofcat.com',
+            subject: 'New Order Received',
+            text: `Order Details: ${JSON.stringify(orderDetails, null, 2)}\n\nUser Details: ${JSON.stringify(userDetails, null, 2)}`,
+        };
+
+        await transporter.sendMail(mailOptions);
+        res.status(200).send('Email sent successfully');
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).send('Error sending email');
+    }
+};
+
 
 

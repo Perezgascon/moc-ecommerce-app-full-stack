@@ -2,53 +2,56 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    font-size: 1.2rem;
     width: 80%;
     height: 20%;
     margin: 10px 1rem;
     cursor: pointer;
-}
-
-.productCard p {
-    font-size: 0.75rem;
+    border: dashed 2px hsl(165, 56%, 33%);
+    border-radius: 20px;
+    padding: 20px;
 }
 
 .productCard img {
-    width: 100%;
-    height: 100%;
+    width: 150px;
+    height: 150px;
+    margin: 10px auto;
 }
 
 .productCard h3 {
-    font-size: 1rem;
     font-family: Didact Gothic;
+    font-size: 1.5rem;
     margin-top: 10px;
     margin-bottom: 20px;
 }
 
+.productCard .priceText {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
 .productLink {
-    text-decoration: none; /* Remove underlining */
-    color: inherit; /* Inherit text color */
-    display: inline-block; /* Ensure each link behaves like a block element */
-    width: 100%; /* Ensure each link takes up the full width of its container */
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    width: 100%;
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 375px) {}
 
-
-}
 @media screen and (min-width: 481px) {
-  
-
+    
 }
 
-@media screen and (min-width: 600px) {
-
-}
+@media screen and (min-width: 600px) {}
 
 @media screen and (min-width: 769px) {
-    
+
+
     .productCard {
         width: 30%;
         height: 30%;
+        border: dashed 1px hsl(165, 56%, 33%);
     }
 
     .productCard h3 {
@@ -59,18 +62,20 @@
         font-size: 1rem;
     }
 
-    .product-card img {
-        width: 80%;
-        height: 80%;
+    .productCard .priceText {
+        font-size: 1.5rem;
     }
 
-    .product-card h3 {
+    .productCard img {
+        width: 250px;
+        height: 250px;
+        margin: 10px;
+    }
+
+    .productCard h3 {
         font-size: 1.25rem;
     }
 
 }
 
-@media screen and (min-width: 1025px) {
-   
-
-}
+@media screen and (min-width: 1025px) {}
