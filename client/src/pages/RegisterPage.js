@@ -1,51 +1,62 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import styles from './registerPage.module.css'
 
 export default function Register() {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [address, setAddress] = useState('');
-    const [email, setEmail] = useState('');
+    const [user, setUser] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        address: '',
+        password: ''
+    });
+    const [error, setError] = useState('');
     const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUser(prev => ({ ...prev, [name]: value }));
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8080/users/', {
-                first_name: firstName, // Use first_name instead of firstName
-                last_name: lastName, // Use last_name instead of lastName
-                address,
-                email,
+            const response = await axios.post('http://localhost:8080/users/register', {
+                first_name: user.firstName,
+                last_name: user.lastName,
+                email: user.email,
+                address: user.address,
+                password: user.password
             });
             console.log("Registration successful", response.data);
             navigate('/login');
         } catch (error) {
-            console.error("Register error: ", error.response.data);
-            // Handle error here, such as displaying a message to the user
+            setError("Failed to register. " + (error.response?.data?.message || 'Unknown error'));
+            console.error("Register error: ", error.response?.data);
         }
     };
 
     return (
-        <div>
+        <div className={styles.registerFormContainer}>
             <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor="address">Address</label>
-                    <input type="text" id="address" name="address" value={address} onChange={(e) => setAddress(e.target.value)} />
-                </div>
+            <form  className={styles.registerForm} onSubmit={handleSubmit}>
+                <label htmlFor="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" value={user.firstName} onChange={handleChange} />
+
+                <label htmlFor="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" value={user.lastName} onChange={handleChange} />
+
+                <label htmlFor="email">Email</label>
+                <input type="email" id="email" name="email" value={user.email} onChange={handleChange} />
+
+                <label htmlFor="address">Address</label>
+                <input type="text" id="address" name="address" value={user.address} onChange={handleChange} />
+
+                <label htmlFor="password">Password</label>
+                <input type="password" id="password" name="password" value={user.password} onChange={handleChange} />
+
+                {error && <p style={{ color: 'red' }}>{error}</p>}
                 <button type="submit">Register</button>
             </form>
         </div>

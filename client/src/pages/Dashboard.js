@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CategoriesSideBar from '../components/CategoriesSideBar';
 import ProductCardContainer from '../components/ProductCardContainer';
 import ShoppingCartButton from '../components/ShoppingCartButton';
-import { Link } from 'react-router-dom';
+import AuthLinks from '../components/AuthLinks';
 
 export default function Dashboard() {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -30,6 +30,7 @@ export default function Dashboard() {
 
   return (
     <div>
+      <AuthLinks />
       <ShoppingCartButton />
       <CategoriesSideBar onSelectCategory={handleCategorySelect} />
       <ProductCardContainer products={products} />

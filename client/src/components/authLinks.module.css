@@ -1,0 +1,41 @@
+.authButtonContainer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 10px;
+    right: 35px;
+}
+
+.authButton {
+    background-color:  hsl(10, 93%, 71%);
+    border: none;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+@media screen and (min-width: 375px) {}
+
+@media screen and (min-width: 481px) {
+}
+
+@media screen and (min-width: 600px) {}
+
+@media screen and (min-width: 769px) {}
+
+@media screen and (min-width: 1151px) {
+    .authButtonContainer {
+        top: 15%;
+        left: 50%;
+        width: 13%;
+        transform: translate(-50%, -50%);
+        background-color: hsl(10, 93%, 71%);
+        border-radius: 5px;
+    }
+
+    .authButton {
+        background-color: hsl(10, 93%, 71%);
+        color: white;
+        font-size: large;
+    }
+
+}

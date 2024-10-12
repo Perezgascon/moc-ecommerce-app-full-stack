@@ -1,41 +1,82 @@
-    import React, { useState } from 'react'
-    import axios from 'axios'
-    import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Modal from '../components/Modal';
+import styles from './loginPage.module.css'
 
-    export default function Login() {
-        const [email, setEmail] = useState('')
+export default function Login() {
+    const [credentials, setCredentials] = useState({
+        email: '',
+        password: ''
+    });
+    const [showModal, setShowModal] = useState(false);
 
-        const navigate = useNavigate()
+    const navigate = useNavigate();
 
-        const handleSubmit = async (e) => {
-            e.preventDefault()
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setCredentials(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
 
-            try {
-                const response = await axios.post('http://localhost:3000/login', {
-                    email
-                })
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-                console.log("Login successful", response.data)
+        try {
+            const response = await axios.post('http://localhost:8080/users/login', credentials);
 
-                localStorage.setItem('token', response.data.token)
+            console.log("Login successful", response.data);
 
-                navigate('/dashboard')
+            localStorage.setItem('token', response.data.token);
 
-            } catch (error) {
-                console.error("Login error: ", error.response.data)
-            }
+            alert("Login succcesful!");
+
+            navigate('/dashboard');
+
+        } catch (error) {
+            console.error("Login error: ", error.response.data);
+            setShowModal(true);
         }
 
-        return (
-            <div>
-                <h1>Login</h1>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                    <button type="submit">Login</button>
-                </form>
-            </div>
-        )
-    }
+    };
+    const closeModal = () => {
+        setShowModal(false);
+    };
+
+    return (
+        <div className={styles.loginFormContainer}>
+            <h1>Login</h1>
+            <form className={styles.loginForm} onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={credentials.email}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        value={credentials.password}
+                        onChange={handleChange}
+                    />
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            {/* Modal */}
+            <Modal
+                show={showModal}
+                message="Incorrect password. Please try again."
+                handleClose={closeModal}
+            />
+        </div>
+    );
+}

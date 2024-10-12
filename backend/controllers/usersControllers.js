@@ -43,6 +43,8 @@ exports.loginUser = async (req, res) => {
         if (!user) {
             return res.status(400).send('User not found.');
         }
+        console.log("Password from request:", req.body.password);
+        console.log("Hashed password from database:", user.password);
 
         const validPassword = await bcrypt.compare(req.body.password, user.password);
         if (!validPassword) {

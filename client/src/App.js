@@ -12,6 +12,9 @@ import NotFound from './pages/NotFound'
 import Footer from './components/Footer'
 import PayPalPaymentPage from './pages/PayPalPaymentPage';
 import EnterYourAddress from './pages/EnterYourAddress';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LogInPage';
+
 
 
 import './App.css';
@@ -38,6 +41,8 @@ export default function App() {
             <Route path="/paypal/:orderId" element={<PayPalPaymentPage />} />
             <Route path="/enter-your-address" element={<EnterYourAddress />} />
             <Route path="/product/:productId" element={<ProductPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>

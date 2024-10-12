@@ -14,7 +14,7 @@ const seedDatabase = async () => {
         await sequelize.sync({ force: true });
 
         // Sync the models
-        await Product.sync({ force: true });
+        await User.sync({ alter: true });
 
         // Create a user
         const user = await User.create({
@@ -23,6 +23,7 @@ const seedDatabase = async () => {
             last_name: 'Doe',
             address: '123 Main St, New York, NY 10030',
             email: 'john@email.com',
+            password: 'encrypted_password_here'
         });
 
         // Create categories
